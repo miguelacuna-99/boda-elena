@@ -68,6 +68,9 @@
 
 <p id="status"></p>
 
+<!-- Iframe oculto -->
+<iframe id="hiddenFrame" style="display:none;"></iframe>
+
 <script>
 document.getElementById("contactForm").addEventListener("submit", (e) => {
   e.preventDefault();
@@ -76,18 +79,20 @@ document.getElementById("contactForm").addEventListener("submit", (e) => {
   const email = encodeURIComponent(document.getElementById("email").value);
   const message = encodeURIComponent(document.getElementById("message").value);
 
-  // URL del Issue Form
-  const url = `https://github.com/miguelacuna-99/boda-elena/issues/new?template=formulario.yml&nombre=${name}&email=${email}&mensaje=${message}`;
+  // URL del Issue Form con los datos pre-rellenados
+  const issueUrl = `https://github.com/miguelacuna-99/boda-elena/issues/new?template=formulario.yml&nombre=${name}&email=${email}&mensaje=${message}`;
 
-  // Abrir en una pestaña oculta para que el usuario no lo vea
-  const popup = window.open(url, "_blank", "width=1,height=1,left=-1000,top=-1000");
+  // Cargar en iframe oculto
+  document.getElementById("hiddenFrame").src = issueUrl;
 
-  // Cerrar automáticamente
-  setTimeout(() => popup.close(), 2000);
-
+  // Mensaje para el usuario
   document.getElementById("status").innerText = "Mensaje enviado correctamente.";
+  
+  // Limpiar formulario
+  document.getElementById("contactForm").reset();
 });
 </script>
+
 
 
 
