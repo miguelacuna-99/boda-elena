@@ -53,11 +53,42 @@
   </style>
 </head>
 <body>
- <a href="https://github.com/miguelacuna-99/boda-elena/issues/new?template=formulario.yml" 
-   target="_blank"
-   style="display:inline-block;padding:12px 24px;background:#333;color:white;border-radius:4px;text-decoration:none;">
-  Enviar mensaje
-</a>
+<form id="contactForm">
+  <label>Nombre:</label>
+  <input type="text" id="name" required>
+
+  <label>Email:</label>
+  <input type="email" id="email" required>
+
+  <label>Mensaje:</label>
+  <textarea id="message" required></textarea>
+
+  <button type="submit">Enviar</button>
+</form>
+
+<p id="status"></p>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = encodeURIComponent(document.getElementById("name").value);
+  const email = encodeURIComponent(document.getElementById("email").value);
+  const message = encodeURIComponent(document.getElementById("message").value);
+
+  // URL del Issue Form
+  const url = `https://github.com/miguelacuna-99/boda-elena/issues/new?template=formulario.yml&nombre=${name}&email=${email}&mensaje=${message}`;
+
+  // Abrir en una pestaña oculta para que el usuario no lo vea
+  const popup = window.open(url, "_blank", "width=1,height=1,left=-1000,top=-1000");
+
+  // Cerrar automáticamente
+  setTimeout(() => popup.close(), 2000);
+
+  document.getElementById("status").innerText = "Mensaje enviado correctamente.";
+});
+</script>
+
 
 
 
