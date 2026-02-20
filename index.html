@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sobre animado</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; padding: 24px; }
+    .wrap { display: grid; gap: 10px; max-width: 520px; }
+    #sobre {
+      width: 300px;
+      height: 200px;
+      object-fit: contain;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-drag: none;
+      background: transparent;
+    }
+    .hint { color:#444; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <img id="sobre" src="frame01.png" alt="Sobre" />
+    <div class="hint">Haz clic en el sobre para abrirlo (1,5s, sin loop).</div>
+  </div>
+
+  <script>
+    const img = document.getElementById("sobre");
+    let animando = false;
+    let abierto = false;
+
+    const timeline = [
+      "frame01.png",
+      "frame02.png",
+      "frame03.png",
+      "frame03.png",
+      "frame05.png",
+      "frame06.png",
+      "frame07.png",
+      "frame08.png",
+      "frame08.png",
+      "frame08.png"
+    ];
+
+    timeline.forEach(src => { const i = new Image(); i.src = src; });
+
+    const totalMs = 1500;
+    const stepMs = Math.round(totalMs / timeline.length);
+
+    img.addEventListener("click", () => {
+      if (animando) return;
+
+      if (!abierto) {
+        animando = true;
+        let idx = 0;
+
+        const tick = () => {
+          img.src = timeline[idx];
+          idx++;
+          if (idx < timeline.length) {
+            setTimeout(tick, stepMs);
+          } else {
+            animando = false;
+            abierto = true;
+
+            // ⭐ REDIRECCIÓN AL TERMINAR LA ANIMACIÓN
+            window.location.href = "formulario.html";
+          }
+        };
+        tick();
+      } else {
+        img.src = "frame01.png";
+        abierto = false;
+      }
+    });
+</script>
+</body>
+</html>
