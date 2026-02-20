@@ -114,15 +114,6 @@
 
 <p id="status"></p>
 
-<!-- Modal con iframe -->
-<div id="modal">
-  <div id="modalContent">
-    <div id="modalHeader">Confirma el envío</div>
-    <iframe id="issueFrame"></iframe>
-    <div id="closeBtn">Cerrar</div>
-  </div>
-</div>
-
 <script>
 document.getElementById("contactForm").addEventListener("submit", (e) => {
   e.preventDefault();
@@ -134,24 +125,25 @@ document.getElementById("contactForm").addEventListener("submit", (e) => {
   const issueUrl = 
     `https://github.com/miguelacuna-99/boda-elena/issues/new?template=formulario.yml&nombre=${name}&email=${email}&mensaje=${message}`;
 
-  // Cargar Issue Form en el iframe
-  document.getElementById("issueFrame").src = issueUrl;
+  // Abrir ventana pequeña centrada
+  const width = 800;
+  const height = 600;
+  const left = (screen.width - width) / 2;
+  const top = (screen.height - height) / 2;
 
-  // Mostrar modal
-  document.getElementById("modal").style.display = "flex";
+  window.open(
+    issueUrl,
+    "Enviar mensaje",
+    `width=${width},height=${height},top=${top},left=${left}`
+  );
 
-  // Mensaje para el usuario
-  document.getElementById("status").innerText = "Revisa y confirma el envío.";
+  document.getElementById("status").innerText =
+    "Revisa la ventana que se ha abierto para confirmar el envío.";
 
-  // Limpiar formulario
   document.getElementById("contactForm").reset();
 });
-
-// Cerrar modal
-document.getElementById("closeBtn").onclick = () => {
-  document.getElementById("modal").style.display = "none";
-};
 </script>
+
 
 
 
