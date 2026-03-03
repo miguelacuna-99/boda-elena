@@ -77,8 +77,6 @@
     .flip-card {
       width: 100%;
       aspect-ratio: 1;
-      perspective: 1000px;
-      position: relative;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 8px;
       overflow: hidden;
@@ -92,28 +90,21 @@
       position: relative;
       width: 100%;
       height: 100%;
-      transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      transform-style: preserve-3d;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.5s ease-out;
     }
     .flip-card-inner.flip {
-      transform: rotateX(180deg);
+      transform: translateY(-100%);
     }
     .flip-card-front, .flip-card-back {
-      position: absolute;
       width: 100%;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      backface-visibility: hidden;
-    }
-    .flip-card-front {
       color: white;
-      z-index: 2;
-    }
-    .flip-card-back {
-      color: white;
-      transform: rotateX(180deg);
+      position: relative;
     }
     .countdown-label {
       font-size: 14px;
@@ -129,8 +120,8 @@
       <div class="countdown-unit">
         <div class="flip-card">
           <div class="flip-card-inner" id="flip-days">
-            <div class="flip-card-front"><span id="days">0</span></div>
-            <div class="flip-card-back"><span id="days-next">1</span></div>
+            <div class="flip-card-front" id="days">00</div>
+            <div class="flip-card-back">00</div>
           </div>
         </div>
         <div class="countdown-label">Días</div>
@@ -138,8 +129,8 @@
       <div class="countdown-unit">
         <div class="flip-card">
           <div class="flip-card-inner" id="flip-hours">
-            <div class="flip-card-front"><span id="hours">0</span></div>
-            <div class="flip-card-back"><span id="hours-next">1</span></div>
+            <div class="flip-card-front" id="hours">00</div>
+            <div class="flip-card-back">00</div>
           </div>
         </div>
         <div class="countdown-label">Horas</div>
@@ -147,8 +138,8 @@
       <div class="countdown-unit">
         <div class="flip-card">
           <div class="flip-card-inner" id="flip-minutes">
-            <div class="flip-card-front"><span id="minutes">0</span></div>
-            <div class="flip-card-back"><span id="minutes-next">1</span></div>
+            <div class="flip-card-front" id="minutes">00</div>
+            <div class="flip-card-back">00</div>
           </div>
         </div>
         <div class="countdown-label">Minutos</div>
@@ -156,8 +147,8 @@
       <div class="countdown-unit">
         <div class="flip-card">
           <div class="flip-card-inner" id="flip-seconds">
-            <div class="flip-card-front"><span id="seconds">0</span></div>
-            <div class="flip-card-back"><span id="seconds-next">1</span></div>
+            <div class="flip-card-front" id="seconds">00</div>
+            <div class="flip-card-back">00</div>
           </div>
         </div>
         <div class="countdown-label">Segundos</div>
@@ -273,16 +264,18 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
 
 <script>
 // Countdown timer with flip animation
+const lastValues = {};
+
 function updateCountdown() {
   const now = new Date();
   const target = new Date('2026-08-26T00:00:00').getTime();
   const remaining = target - now.getTime();
   
   if (remaining <= 0) {
-    updateFlipNumber('days', '0', '0');
-    updateFlipNumber('hours', '0', '0');
-    updateFlipNumber('minutes', '0', '0');
-    updateFlipNumber('seconds', '0', '0');
+    updateFlipNumber('days', '00', '00');
+    updateFlipNumber('hours', '00', '00');
+    updateFlipNumber('minutes', '00', '00');
+    updateFlipNumber('seconds', '00', '00');
     return;
   }
   
@@ -291,31 +284,69 @@ function updateCountdown() {
   const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
   
-  const nextSeconds = (seconds + 1) % 60;
+  const daysStr = days.toString().padStart(2, '0');
+  const hoursStr = hours.toString().padStart(2, '0');
+  const minutesStr = minutes.toString().padStart(2, '0');
+  const secondsStr = seconds.toString().padStart(2, '0');
   
-  updateFlipNumber('days', days.toString().padStart(2, '0'), ((days + 1) % 1000).toString().padStart(2, '0'));
-  updateFlipNumber('hours', hours.toString().padStart(2, '0'), ((hours + 1) % 24).toString().padStart(2, '0'));
-  updateFlipNumber('minutes', minutes.toString().padStart(2, '0'), ((minutes + 1) % 60).toString().padStart(2, '0'));
-  updateFlipNumber('seconds', seconds.toString().padStart(2, '0'), nextSeconds.toString().padStart(2, '0'));
+  const nextDays = (days + 1).toString().padStart(2, '0');
+  const nextHours = ((hours + 1) % 24).toString().padStart(2, '0');
+  const nextMinutes = ((minutes + 1) % 60).toString().padStart(2, '0');
+  const nextSeconds = ((seconds + 1) % 60).toString().padStart(2, '0');
+  
+  updateFlipNumber('days', daysStr, nextDays);
+  updateFlipNumber('hours', hoursStr, nextHours);
+  updateFlipNumber('minutes', minutesStr, nextMinutes);
+  updateFlipNumber('seconds', secondsStr, nextSeconds);
 }
 
 function updateFlipNumber(id, currentValue, nextValue) {
   const front = document.getElementById(id);
-  const back = document.getElementById(id + '-next');
   const flipCard = document.getElementById('flip-' + id);
   
-  if (front.textContent !== currentValue) {
+  // Only update if the value has changed
+  if (lastValues[id] !== currentValue) {
+    lastValues[id] = currentValue;
     front.textContent = currentValue;
-    back.textContent = nextValue;
+    
+    // Trigger flip animation
+    flipCard.classList.remove('flip');
+    // Force reflow to restart animation
+    void flipCard.offsetWidth;
     flipCard.classList.add('flip');
     
+    // Reset after animation completes
     setTimeout(() => {
       flipCard.classList.remove('flip');
-    }, 600);
+      front.textContent = nextValue;
+    }, 500);
   }
 }
 
-// Update countdown immediately and then every second
+// Initialize last values
+function initializeCountdown() {
+  const now = new Date();
+  const target = new Date('2026-08-26T00:00:00').getTime();
+  const remaining = target - now.getTime();
+  
+  const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+  
+  lastValues['days'] = days.toString().padStart(2, '0');
+  lastValues['hours'] = hours.toString().padStart(2, '0');
+  lastValues['minutes'] = minutes.toString().padStart(2, '0');
+  lastValues['seconds'] = seconds.toString().padStart(2, '0');
+  
+  document.getElementById('days').textContent = lastValues['days'];
+  document.getElementById('hours').textContent = lastValues['hours'];
+  document.getElementById('minutes').textContent = lastValues['minutes'];
+  document.getElementById('seconds').textContent = lastValues['seconds'];
+}
+
+// Initialize and update countdown
+initializeCountdown();
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
