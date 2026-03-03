@@ -50,9 +50,58 @@
     button:hover {
       background-color: #555;
     }
+    .countdown {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .countdown h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    .countdown-units {
+      display: flex;
+      justify-content: space-around;
+      gap: 10px;
+    }
+    .countdown-unit {
+      flex: 1;
+    }
+    .countdown-number {
+      font-size: 36px;
+      font-weight: bold;
+      display: block;
+    }
+    .countdown-label {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
+  <div class="countdown">
+    <h2>La boda en:</h2>
+    <div class="countdown-units">
+      <div class="countdown-unit">
+        <span class="countdown-number" id="days">0</span>
+        <div class="countdown-label">Días</div>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="hours">0</span>
+        <div class="countdown-label">Horas</div>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="seconds">0</span>
+        <div class="countdown-label">Segundos</div>
+      </div>
+    </div>
+  </div>
+
   <form id="contactForm">
   <label>Nombre:</label>
   <input type="text" id="name" required>
@@ -69,6 +118,33 @@
 <p id="status"></p>
 
 <script>
+// Countdown timer
+function updateCountdown() {
+  const now = new Date();
+  const target = new Date('2026-08-26T00:00:00').getTime();
+  const remaining = target - now.getTime();
+  
+  if (remaining <= 0) {
+    document.getElementById('days').textContent = '0';
+    document.getElementById('hours').textContent = '0';
+    document.getElementById('seconds').textContent = '0';
+    return;
+  }
+  
+  const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+  
+  document.getElementById('days').textContent = days;
+  document.getElementById('hours').textContent = hours;
+  document.getElementById('seconds').textContent = seconds;
+}
+
+// Update countdown immediately and then every second
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// Form submission handler
 document.getElementById("contactForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
