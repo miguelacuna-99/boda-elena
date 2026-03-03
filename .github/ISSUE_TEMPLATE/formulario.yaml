@@ -1,0 +1,28 @@
+name: Formulario de contacto
+description: Mensaje enviado desde la web de la boda
+title: "Nuevo mensaje de contacto"
+labels: ["formulario"]
+body:
+  - type: input
+    id: nombre
+    attributes:
+      label: Nombre
+      placeholder: Escribe tu nombre
+    validations:
+      required: true
+
+  - type: input
+    id: email
+    attributes:
+      label: Email
+      placeholder: tu@email.com
+    validations:
+      required: true
+
+  - type: textarea
+    id: mensaje
+    attributes:
+      label: Mensaje
+      placeholder: Escribe tu mensaje
+    validations:
+      required: true
