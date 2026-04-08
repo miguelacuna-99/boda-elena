@@ -4,75 +4,34 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sobre animado</title>
-  <style>
-    body { font-family: system-ui, Arial, sans-serif; padding: 24px; }
-    .wrap { display: grid; gap: 10px; max-width: 520px; }
-    #sobre {
-      width: 300px;
-      height: 200px;
-      object-fit: contain;
-      cursor: pointer;
-      user-select: none;
-      -webkit-user-drag: none;
-      background: transparent;
-    }
-    .hint { color:#444; font-size: 14px; }
-  </style>
+  <link rel="stylesheet" href="styles-index.css" />
 </head>
 <body>
   <div class="wrap">
-    <img id="sobre" src="frame01.png" alt="Sobre" />
-    <div class="hint">Haz clic en el sobre para abrirlo (1,5s, sin loop).</div>
+
+    <img id="sobre" src="Sellodecera_ sombra.png" alt="Sobre" />
+    
   </div>
+
+  <p style="text-align: center; margin-top: -250px; font-style: italic;">¡Nos casamos!</p>
+  <p style="text-align: center; margin-top: 20px; font-style: italic;">y no sería lo mismo sin vosotros.</p>
 
   <script>
     const img = document.getElementById("sobre");
     let animando = false;
-    let abierto = false;
-
-    const timeline = [
-      "frame01.png",
-      "frame02.png",
-      "frame03.png",
-      "frame03.png",
-      "frame05.png",
-      "frame06.png",
-      "frame07.png",
-      "frame08.png",
-      "frame08.png",
-      "frame08.png"
-    ];
-
-    timeline.forEach(src => { const i = new Image(); i.src = src; });
-
-    const totalMs = 1500;
-    const stepMs = Math.round(totalMs / timeline.length);
 
     img.addEventListener("click", () => {
       if (animando) return;
 
-      if (!abierto) {
-        animando = true;
-        let idx = 0;
+      animando = true;
+      img.style.animation = 'spin 1.5s linear';
 
-        const tick = () => {
-          img.src = timeline[idx];
-          idx++;
-          if (idx < timeline.length) {
-            setTimeout(tick, stepMs);
-          } else {
-            animando = false;
-            abierto = true;
-
-            // ⭐ REDIRECCIÓN AL TERMINAR LA ANIMACIÓN
-            window.location.href = "formulario.html";
-          }
-        };
-        tick();
-      } else {
-        img.src = "frame01.png";
-        abierto = false;
-      }
+      setTimeout(() => {
+        animando = false;
+        img.style.animation = 'none';
+        img.style.transform = 'rotate(0deg)';
+        window.location.href = "formulario.html";
+      }, 1500);
     });
 </script>
 </body>

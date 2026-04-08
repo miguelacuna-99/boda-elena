@@ -4,287 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Formulario - Boda Elena</title>
-  <style>
-    body { 
-      font-family: system-ui, Arial, sans-serif; 
-      padding: 24px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .formulario {
-      display: grid;
-      gap: 15px;
-    }
-    h1 {
-      color: #333;
-    }
-    label {
-      display: block;
-      font-weight: 500;
-      margin-bottom: 5px;
-      color: #333;
-    }
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-family: inherit;
-      font-size: 14px;
-      box-sizing: border-box;
-    }
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-    button {
-      padding: 12px 24px;
-      background-color: #333;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 500;
-    }
-
-     .wedding-hero {
-      background-color: #000;
-     
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 60px 20px;
-      color: #fff;
-    }
-
-    .wedding-hero .subtitle {
-      font-family: 'Courier New', cursive;
-      font-size: 14px;
-      letter-spacing: 0.05em;
-      margin-bottom: 40px;
-      color: #ccc;
-    }
-
-    .wedding-hero .name {
-      font-family: Georgia, serif;
-      font-size: 52px;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    .wedding-hero .ampersand {
-      font-family: Georgia, serif;
-      font-size: 36px;
-      color: #b8a96a;
-      margin: 8px 0;
-    }
-
-    .wedding-hero .date {
-      font-family: Georgia, serif;
-      font-size: 15px;
-      color: #ccc;
-      margin-top: 40px;
-      line-height: 1.8;
-      letter-spacing: 0.05em;
-    }
-
-    .wedding-hero .cta {
-      margin-top: 80px;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #fff;
-    
-      padding-bottom: 4px;
-    }
-    button:hover {
-      background-color: #555;
-    }
-    .countdown {
-      background: linear-gradient(135deg, #552525 0%, #764ba2 100%);
-      color: white;
-      padding: 30px;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-    .countdown h2 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 24px;
-    }
-    .countdown-units {
-      display: flex;
-      justify-content: space-around;
-      gap: 15px;
-    }
-    .countdown-unit {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .flip-card {
-      width: 100%;
-      aspect-ratio: 1;
-      perspective: 1000px;
-      position: relative;
-      background: rgba(240, 171, 69, 0.829);
-      border-radius: 8px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      font-weight: bold;
-    }
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      transform-style: preserve-3d;
-    }
-    .flip-card-inner.flip {
-      transform: rotateX(180deg);
-    }
-    .flip-card-front, .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backface-visibility: hidden;
-    }
-    .flip-card-front {
-      color: white;
-      z-index: 2;
-    }
-    .flip-card-back {
-      color: white;
-      transform: rotateX(180deg);
-      display: none;
-    }
-    .countdown-label {
-      font-size: 14px;
-      opacity: 0.9;
-      margin-top: 5px;
-    }
-    .localizacion {
-      margin-top: 30px;
-    }
-    .localizacion h2 {
-      color: #333;
-      margin-bottom: 15px;
-    }
-    .mapa-container {
-      width: 100%;
-      height: 400px;
-      border-radius: 8px;
-      border: 2px solid #333;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      margin-top: 15px;
-    }
-    .mapa-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .boton-mapa {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 24px;
-      background-color: #333;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 500;
-      transition: background-color 0.3s ease;
-    }
-    .boton-mapa:hover {
-      background-color: #555;
-    }
-    .faq-item {
-      background: #ffffff;
-      border: 0.5px solid #ccc;
-      border-radius: 12px;
-      overflow: hidden;
-      max-width: 640px;
-      font-family: Georgia, serif;
-      margin-bottom: 20px;
-    }
-
-    .faq-trigger {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 24px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-      gap: 16px;
-    }
-
-    .faq-trigger:hover {
-      background: #f5f5f5;
-    }
-
-    .faq-question {
-      font-size: 15px;
-      color: #888880;
-      font-style: italic;
-      letter-spacing: 0.01em;
-    }
-
-    .faq-icon {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      border: 0.5px solid #ccc;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease;
-      color: #888880;
-      font-size: 13px;
-    }
-
-    .faq-icon.open {
-      transform: rotate(180deg);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
-      padding: 0 24px;
-    }
-
-    .faq-answer.open {
-      max-height: 300px;
-      padding: 0 24px 20px;
-    }
-
-    .faq-answer-inner {
-      border-top: 0.5px solid #e0e0e0;
-      padding-top: 16px;
-      font-size: 14px;
-      color: #888880;
-      line-height: 1.7;
-    }
-  </style>
+  <link rel="stylesheet" href="styles-formulario.css" />
+</head>
 </head>
 <body>
 
@@ -341,50 +62,67 @@
   <div class = "localizacion">
  <h2>Localización</h2>
  <p>Finca casa del Esquileo</p>
- <div class="mapa-container">
+ <div class = "localizacion-inner">
+  <p>
+El 26 de septiembre a las 12:15 
+  </p>
+  <p>
+Cabanillas del Monte, Segovia
+  </p>
+<div class="mapa-container">
    <iframe src="https://maps.google.com/maps?q=40.9767939,-4.0314319&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
  </div>
- <a href="https://www.google.com/maps/place/Finca+Esquileo+de+Cabanillas+del+Monte+Segovia/@40.9767939,-4.0340068,17z/data=!3m1!4b1!4m6!3m5!1s0xd41472902c2601d:0x3c28147c17bbc914!8m2!3d40.9767899!4d-4.0314319!16s%2Fg%2F11h1szrqv?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="boton-mapa">Abrir en Maps</a>
-<div>
-  <p>informacion adicional sobre la localizacion</p>
+ <a class= "localization-button" href="https://www.google.com/maps/place/Finca+Esquileo+de+Cabanillas+del+Monte+Segovia/@40.9767939,-4.0340068,17z/data=!3m1!4b1!4m6!3m5!1s0xd41472902c2601d:0x3c28147c17bbc914!8m2!3d40.9767899!4d-4.0314319!16s%2Fg%2F11h1szrqv?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" >Abrir en Maps</a>
+
+ </div>
+ 
+ <div class="texto-esquileo">
+  <p>Segovia es casa, es refugio y es donde empezó todo. Nuestra historia comienza en Brieva, entre estos mismos paisajes y bajo este mismo cielo de la sierra. Por eso, no podíamos imaginar otro lugar para dar el "sí quiero" que no hablara de nuestras raices.</p>
+  <p>Elegimos Casa El Esquileo, en Cabanillas del Monte, porque es patrimonio vivo de Castilla. Este lugar fue el corazón de la tradición lanera hace 300 años, pero lo que realmente nos cautivó es que sus muros aún "hablan": en las piedras del salón todavía se pueden leer los nombres y dibujos que los esquiladores grabaron mientras trabajaban en el siglo XVIII.</p>
+<img src="esquileo1.jpg" style="width: 59%;">
+<img src="esquileo2.jpg" style="width: 33%;">
 </div>  
 
 </div>
 
-<div>
+<div class = "preparacion">
   <h2>¡¡VENID PREPARADOS PARA DARLO TODO!!</h2>
-  <p>TEXTO ADICIONAL</p>
-   <p>FOTO</p>
-    <p>TEXTO ADICIONAL</p>
+  <p>Queríamos que vivieseis la full experience de fiesta en Segovia y hemos hablado con el ayuntamiento de Cabanillas para que 
+al acabar la boda comience en la plaza del pueblo 
+una orquesta con su posterior discomovil!</p>
+   <img src = "fotoPreparados.jpg" style="width: 80%;">
+    <p>Venid preparados con ropa de abrigo y deportivas cómodas para darlo todo después de la boda que hay fiesta 
+para quien aguante hasta las 7 de la mañana!!</p>
 </div>
 
-<div>
+<div class="alojamientos">
   <h2>ALOJAMIENTO</h2>
-  <p>TEXTO ADICIONAL</p>
-   <div>
+  <p>Os recomendamos, ya que son las fiestas del pueblo de Cabanillas ese mismo día alojaros en los pueblos más cercanos como Torrecaballeros, Tres Casas o Brieva, para poder dormir mejor, aunque hay casas rurales tanto en Cabanillas 
+como en Torrecaballeros y Brieva</p>
+   <div class="alojamientos-inner">
     <h3>Hotel Las Fuentes</h3>
     <p>Torrecaballeros</p>
     <button>Ver detalles</button>
    </div>
-   <div>
+   <div class="alojamientos-inner">
     <h3>Hostal Burgos</h3>
     <p>Torrecaballeros</p>
     <button>Ver detalles</button>
    </div>
-   <div>
+   <div class="alojamientos-inner">
     <h3>Hostal la posada del Rancho</h3>
     <p>Torrecaballeros</p>
     <button>Ver detalles</button>
    </div>
 </div>
 
-<div>
+<div class="preboda">
 <h2>¡¡HABRÁ PREBODA!!</h2>
- <p>TEXTO ADICIONAL</p>
-  <p>TEXTO ADICIONAL</p>
-<div>
+ <p>Queremos disfrutar de un fin de semana completo con vosotros y no podía ser de otra forma que calentando motores para la boda.</p>
+  <p>Os invitamos a pasar la tarde del viernes 25 de septiembre con bien de cervecita, picoteo y muchos nervios.</p>
+<div class="localizacion-inner-2">
   <h3>Localizacion</h3>
-  <p>TEXTO ADICIONAL</p>
+  <p>La realizaremos en el jardín donde Elena pasó su infancia, en casa de su Abuela, en Brieva. Es un lugar muy especial para compartir con vosotros estos momentos previos a la boda.</p>
   <div class="mapa-container">
     <iframe src="https://maps.google.com/maps?q=41.036201,-4.051331&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
@@ -392,7 +130,7 @@
 </div>
 </div>
 
-<div>
+<div class="preguntas">
   <h2>Preguntas Frecuentes</h2>
   <div class="faq-list">
 
@@ -403,38 +141,47 @@
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          Sí, disponemos de parking gratuito para todos los asistentes. El aparcamiento
-          está ubicado en la entrada principal del edificio y cuenta con plazas para
-          personas con movilidad reducida.
+          Hay un parking bastante grande en la entrada a la finca. El servicio de la finca os indicará sin problema donde  aparcar.
         </div>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-trigger" onclick="toggle(this)" aria-expanded="false">
-        <span class="faq-question">¿Cuál es el horario del evento?</span>
+        <span class="faq-question">¿Hay código de vestimenta?</span>
         <span class="faq-icon">&#8964;</span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          El evento comienza a las 10:00h y finaliza a las 19:00h. Las puertas abren
-          media hora antes para el registro de asistentes.
+          Queremos que vengáis guapos y con muchas ganas de pasarlo bien.
+          El único requisito es el básico de no utilizar colores blancos o similares como el beige o amaarillo o rosa muy blanquecinos.
+          Además os recomendamos traer o ropa de cambio o de abrigo y deportivas para la última parte de la boda.
         </div>
       </div>
     </div>
 
-    <div class="faq-item">
-      <button class="faq-trigger" onclick="toggle(this)" aria-expanded="false">
-        <span class="faq-question">¿Es necesario registrarse con antelación?</span>
-        <span class="faq-icon">&#8964;</span>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-inner">
-          Sí, el registro previo es obligatorio. Puedes hacerlo a través de nuestra
-          página web hasta 48 horas antes del evento.
-        </div>
+    <div class = "colage">
+      <p>Gracias por acompañarnos en un día tan especial</p>
+      <p>14 años después.</p>
+      <div class="colage-grid">
+        <img src="colage/1.png" alt="Foto 1" />
+        <img src="colage/2.jpg" alt="Foto 2" />
+        <img src="colage/3.jpg" alt="Foto 3" />
+        <img src="colage/4.jpg" alt="Foto 4" />
+        <img src="colage/5.jpg" alt="Foto 5" />
+        <img src="colage/6.jpg" alt="Foto 6" />
+        <img src="colage/7.jpg" alt="Foto 7" />
+        <img src="colage/8.jpg" alt="Foto 8" />
+        <img src="colage/9.jpg" alt="Foto 9" />
+        <img src="colage/10.jpg" alt="Foto 10" />
+        <img src="colage/11.jpg" alt="Foto 11" />
+        <img src="colage/12.jpg" alt="Foto 12" />
+        <img src="colage/13.jpg" alt="Foto 13" />
+        <img src="colage/14.jpg" alt="Foto 14" />
+        <img src="colage/15.jpg" alt="Foto 15" />
       </div>
     </div>
+   
 
   </div>
 </div>
