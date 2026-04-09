@@ -1,8 +1,23 @@
+html, body { 
+  margin: 0;
+  padding: 0;
+}
+
 body { 
   font-family: system-ui, Arial, sans-serif; 
-  padding: 24px;
+  padding: 0px;
   max-width: 700px;
   margin: 0 auto;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
 }
 
 .formulario {
@@ -57,16 +72,18 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 60px 20px;
+  padding: 40px 20px;
   color: #fff;
   background-size: cover;
+  margin: 0;
+  margin-bottom: 0;
 }
 
 .wedding-hero .subtitle {
   font-family: 'Courier New', cursive;
   font-size: 14px;
   letter-spacing: 0.05em;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   color: #ccc;
 }
 
@@ -89,13 +106,13 @@ button {
   font-family: Georgia, serif;
   font-size: 15px;
   color: #ccc;
-  margin-top: 40px;
+  margin-top: 20px;
   line-height: 1.8;
   letter-spacing: 0.05em;
 }
 
 .wedding-hero .cta {
-  margin-top: 80px;
+  margin-top: 30px;
   font-family: Arial, sans-serif;
   font-size: 12px;
   letter-spacing: 0.2em;
@@ -111,14 +128,14 @@ button:hover {
 .countdown {
   background-color: #641740;
   color: white;
-  padding: 30px;
-  margin-bottom: 0px;
+  padding: 20px 30px;
+  margin: 0;
+  margin-bottom: 0;
   text-align: center;
 }
 
 .countdown h2 {
-  margin-top: 0;
-  margin-bottom: 10px;
+  margin: 0 0 3px 0;
   font-size: 24px;
 }
 
@@ -126,10 +143,6 @@ button:hover {
   display: flex;
   justify-content: space-around;
   gap: 15px;
-}
-
-.localizacion {
-  text-align: center;
 }
 
 .countdown-unit {
@@ -194,22 +207,25 @@ button:hover {
 }
 
 .localizacion {
-  margin-top: 0px;
+  margin: 0;
+  padding: 10px 0 0 0;
   background-color: #8E9576;
+  text-align: center;
+  height: 1000px;
 }
 
 .localizacion h2 {
+  margin: 0 0 5px 0;
   color: #333;
-  margin-bottom: 15px;
 }
 
 .localizacion-inner {
-  background-color: #ffffff;
-  padding: -15px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 8px;
   border-radius: 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   width: 90%;
-  margin: 0 auto;
+  margin: 3px auto;
 }
 
 .mapa-container {
@@ -219,7 +235,7 @@ button:hover {
   border: 2px solid #333;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin: auto;
+  margin: 5px auto;
 }
 
 .mapa-container iframe {
@@ -230,7 +246,7 @@ button:hover {
 
 .boton-mapa {
   display: inline-block;
-  margin-top: 15px;
+  margin-top: 8px;
   padding: 12px 24px;
   background-color: #333;
   color: white;
@@ -244,7 +260,7 @@ button:hover {
 
 .localization-button {
   display: inline-block;
-  margin-top: 15px;
+  margin-top: 8px;
   padding: 12px 24px;
   background-color: #641740;
   color: white;
@@ -255,8 +271,7 @@ button:hover {
   font-weight: 500;
   transition: background-color 0.3s ease;
   width: 70%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .localization-button:hover {
@@ -274,7 +289,7 @@ button:hover {
   overflow: hidden;
   max-width: 640px;
   font-family: Georgia, serif;
-  margin-bottom: 20px;
+  margin: 0 0 10px 0;
 }
 
 .faq-trigger {
@@ -282,7 +297,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
+  padding: 12px 15px;
   background: none;
   border: none;
   cursor: pointer;
@@ -333,21 +348,22 @@ button:hover {
 
 .faq-answer-inner {
   border-top: 0.5px solid #e0e0e0;
-  padding-top: 16px;
+  padding-top: 8px;
   font-size: 14px;
   color: #888880;
   line-height: 1.7;
 }
 
 .colage {
+  margin: 0;
   text-align: center;
-  padding: 40px 20px;
+  padding: 15px 20px;
 }
 
 .colage p {
   font-size: 16px;
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .colage-grid {
@@ -356,53 +372,106 @@ button:hover {
   gap: 10px;
   max-width: 600px;
   margin: 0 auto;
+  padding: 0 10px;
 }
 
 .colage-grid img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 16/9;
   object-fit: cover;
+  background-color: #f0f0f0;
   border-radius: 4px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
+
+.colage-grid img:hover {
+  transform: scale(1.05);
+}
+
+.colage-grid img:nth-child(3) {
+  object-fit: scale-down;
+
+  
+}
+.colage-grid img:nth-child(13) {
+  
+  object-position: top;
+  
+}
+.colage-grid img:nth-child(14) {
+  
+  object-position: top;
+  
+}
+
 .texto-esquileo{
     width: 90%;
-   
-    margin: auto;
-     margin-top: 50px;
-    height: 600px;
+    margin: 0 auto;
+    padding: 8px 0;
+    height: auto;
 }
 .preparacion{
-    background-color: #8E9576;
-    text-align: center;
+  margin: 0;
+  padding: 10px 0;
+  background-color: #8E9576;
+  text-align: center;
+  height: 1000px;
 }
 .alojamientos{
+    margin: 0;
+    padding: 15px 0;
     background-color: #F5F1EA;
     text-align: center;
-    height: 650px;
+    height: 500px;
 }
 .alojamientos p{
     color: #8E9576;
+    margin: 3px 0;
 }
 .alojamientos-inner{
+    margin: 3px 0;
+    padding: 8px;
     text-align: left;
-background-color: #F1ECE2;
+    background-color: #F1ECE2;
 }
 .preboda{
+    margin: 0;
+    padding: 15px 0;
     background-color: rgba(100, 23, 64, 1);
     text-align: center;
-    height: 700px;
+    height: auto;
 }
+
 .localizacion-inner-2{
+    margin: 0;
+    padding: 8px;
     text-align: center;
-background-color: rgba(255, 255, 255, 0.2);
-  padding: -15px;
-  border-radius: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  width: 90%;
-  margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    width: 90%;
+    margin: 3px auto;
 }
 
 .preguntas{
+    margin: 0;
+    padding: 15px 0;
     text-align: center;
+}
+.button_preboda{
+      display: inline-block;
+    margin-top: 8px;
+    padding: 12px 24px;
+    background-color: #F1ECE2;
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    width: 70%;
+    margin-bottom: 5px;
 }
 
