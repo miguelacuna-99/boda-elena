@@ -66,11 +66,11 @@ button {
   background-image: url(IMG_6352.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 70vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
   padding: 40px 20px;
   color: #fff;
@@ -112,13 +112,25 @@ button {
 }
 
 .wedding-hero .cta {
-  margin-top: 30px;
+
+  margin-bottom: 20px;
   font-family: Arial, sans-serif;
-  font-size: 12px;
+  font-size: 48px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #fff;
   padding-bottom: 4px;
+  animation: bounce 2s infinite;
+  order: 999;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
 }
 
 button:hover {
@@ -126,12 +138,13 @@ button:hover {
 }
 
 .countdown {
-  background-color: #641740;
+  background-color:rgba(100, 23, 64, 1) ;
   color: white;
   padding: 20px 30px;
   margin: 0;
   margin-bottom: 0;
   text-align: center;
+  height: 500px;
 }
 
 .countdown h2 {
@@ -209,9 +222,9 @@ button:hover {
 .localizacion {
   margin: 0;
   padding: 10px 0 0 0;
-  background-color: #8E9576;
+  background-color: rgba(245, 241, 234, 1);
   text-align: center;
-  height: 1000px;
+  height: 1200px;
 }
 
 .localizacion h2 {
@@ -226,6 +239,7 @@ button:hover {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   width: 90%;
   margin: 3px auto;
+  height: 450px;
 }
 
 .mapa-container {
@@ -284,12 +298,14 @@ button:hover {
 
 .faq-item {
   background: #ffffff;
-  border: 0.5px solid #ccc;
-  border-radius: 12px;
+  border: 0.5px solid #ddd;
+  border-radius: 8px;
   overflow: hidden;
-  max-width: 640px;
+  max-width: 600px;
   font-family: Georgia, serif;
-  margin: 0 0 10px 0;
+  margin: 0 0 15px 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .faq-trigger {
@@ -297,12 +313,13 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 15px;
+  padding: 16px 18px;
   background: none;
   border: none;
   cursor: pointer;
   text-align: left;
   gap: 16px;
+  transition: background-color 0.2s ease;
 }
 
 .faq-trigger:hover {
@@ -311,9 +328,9 @@ button:hover {
 
 .faq-question {
   font-size: 15px;
-  color: #888880;
-  font-style: italic;
+  color: #666;  font-style: normal;
   letter-spacing: 0.01em;
+  font-weight: 500;
 }
 
 .faq-icon {
@@ -358,6 +375,7 @@ button:hover {
   margin: 0;
   text-align: center;
   padding: 15px 20px;
+  background-color: rgba(142, 149, 118, 1);
 }
 
 .colage p {
@@ -408,70 +426,188 @@ button:hover {
 .texto-esquileo{
     width: 90%;
     margin: 0 auto;
-    padding: 8px 0;
+    padding: 20px;
     height: auto;
+    
+    text-align: left;
+}
+
+.texto-esquileo p {
+    margin: 0 0 15px 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
 }
 .preparacion{
   margin: 0;
-  padding: 10px 0;
+  padding: 30px 20px;
   background-color: #8E9576;
   text-align: center;
-  height: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+}
+
+.preparacion h2 {
+  margin: 0 0 20px 0;
+  color: #fff;
+}
+
+.preparacion p {
+  margin: 0 0 20px 0;
+  color: #fff;
+  max-width: 90%;
+  line-height: 1.6;
+}
+
+.preparacion img {
+  margin: 20px 0;
+  max-width: 90%;
+  height: auto;
 }
 .alojamientos{
     margin: 0;
-    padding: 15px 0;
+    padding: 30px 20px;
     background-color: #F5F1EA;
     text-align: center;
-    height: 500px;
-}
-.alojamientos p{
-    color: #8E9576;
-    margin: 3px 0;
-}
-.alojamientos-inner{
-    margin: 3px 0;
-    padding: 8px;
-    text-align: left;
-    background-color: #F1ECE2;
-}
-.preboda{
-    margin: 0;
-    padding: 15px 0;
-    background-color: rgba(100, 23, 64, 1);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: auto;
 }
 
-.localizacion-inner-2{
-    margin: 0;
-    padding: 8px;
+.alojamientos h2 {
+    margin: 0 0 20px 0;
+    color: #333;
+}
+
+.alojamientos > p:first-of-type {
+    margin: 0 0 30px 0;
+    color: #8E9576;
+    max-width: 90%;
+    line-height: 1.6;
+}
+
+.alojamientos p{
+    color: #8E9576;
+    margin: 5px 0;
+}
+
+.alojamientos-inner{
+    margin: 15px 0;
+    padding: 20px;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    width: 90%;
-    margin: 3px auto;
+    background-color: #F1ECE2;
+    border-radius: 4px;
+    width: 85%;
+    max-width: 500px;
+}
+
+.alojamientos-inner h3 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.alojamientos-inner p {
+    margin: 0 0 15px 0;
+    color: #8E9576;
+    font-size: 14px;
+}
+
+.alojamientos-inner button {
+    background-color: #8E9576;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.preboda{
+    margin: 0;
+    padding: 30px 20px;
+    background-color: rgba(100, 23, 64, 1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+}
+
+.preboda h2 {
+    margin: 0 0 20px 0;
+    color: #fff;
+}
+
+.preboda > p {
+    margin: 0 0 15px 0;
+    color: #fff;
+    max-width: 90%;
+    line-height: 1.6;
+}
+
+.localizacion-inner-2{
+    margin: 20px 0;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    width: 85%;
+    max-width: 500px;
+}
+
+.localizacion-inner-2 h3 {
+    margin: 0 0 15px 0;
+    color: #fff;
+    font-size: 24px;
+}
+
+.localizacion-inner-2 p {
+    margin: 0 0 15px 0;
+    color: #fff;
+    line-height: 1.6;
+    font-size: 14px;
 }
 
 .preguntas{
     margin: 0;
-    padding: 15px 0;
+    padding: 30px 20px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    background-color: #f9f7f3;
+}
+
+.preguntas h2 {
+    margin: 0 0 25px 0;
+    color: #333;
 }
 .button_preboda{
-      display: inline-block;
-    margin-top: 8px;
-    padding: 12px 24px;
+    display: block;
+    margin: 15px auto 0;
+    padding: 12px 30px;
     background-color: #F1ECE2;
-    color: black;
+    color: #333;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
     font-weight: 500;
     transition: background-color 0.3s ease;
-    width: 70%;
-    margin-bottom: 5px;
+    
+    border: none;
+}
+
+.button_preboda:hover {
+    background-color: #e6ddd2;
+}
+
+.localizacion-inner-2 .mapa-container {
+    
+    border-radius: 8px;
+    overflow: hidden;
 }
 
