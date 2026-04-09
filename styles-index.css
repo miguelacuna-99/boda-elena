@@ -5,6 +5,11 @@ body {
   margin: 0 auto;
 }
 
+@font-face {
+  font-family: "August Script";
+  src: url("August Script Bold Free.ttf") format("truetype");
+}
+
 .wrap {
   background-image: url(sobre_blanco.png);
   background-size: cover;
@@ -26,10 +31,18 @@ body {
   background: transparent;
 }
 .letter-type{
-    font-family: "The Girl Next Door", cursive;
-  font-weight: 200;
-  font-size: 30px;
+    font-family: "August Script", cursive;
+  font-weight: 800;
+  font-size: 50px;
   font-style: oblique;
+  transform: rotate(-3deg);
+}
+.letter-type-2{
+  font-family: "August Script", cursive;
+  font-weight: 800;
+  font-size: 40px;
+  font-style: oblique;
+  transform: rotate(-3deg);
 }
 
 @keyframes spin {

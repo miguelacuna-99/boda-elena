@@ -3,6 +3,16 @@ html, body {
   padding: 0;
 }
 
+@font-face {
+  font-family: "Black Mango";
+  src: url("Black Mango Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "The Seasons";
+  src: url("the-seasons-regular.ttf") format("truetype");
+}
+
 body { 
   font-family: system-ui, Arial, sans-serif; 
   padding: 0px;
@@ -88,7 +98,8 @@ button {
 }
 
 .wedding-hero .name {
-  font-family: Georgia, serif;
+  font-family: "The Seasons";
+  color: white;
   font-size: 52px;
   font-weight: 400;
   letter-spacing: 0.15em;
@@ -220,6 +231,7 @@ button:hover {
 }
 
 .localizacion {
+  font-family: "The Seasons";
   margin: 0;
   padding: 10px 0 0 0;
   background-color: rgba(245, 241, 234, 1);
@@ -433,10 +445,13 @@ button:hover {
 }
 
 .texto-esquileo p {
+    font-family: "The Seasons";
     margin: 0 0 15px 0;
     padding: 0;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.5;
+    font-size:14px;
+   
 }
 .preparacion{
   margin: 0;
