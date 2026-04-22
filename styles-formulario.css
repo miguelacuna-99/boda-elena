@@ -80,7 +80,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   text-align: center;
   padding: 40px 20px;
   color: #fff;
@@ -104,20 +104,31 @@ button {
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  margin: 0;
+  margin-top: 400px;
+}
+.wedding-hero .name2 {
+  font-family: "The Seasons";
+  color: white;
+  font-size: 52px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0;
 }
 
 .wedding-hero .ampersand {
   font-family: Georgia, serif;
   font-size: 36px;
   color: #b8a96a;
-  margin: 8px 0;
+  margin: 2px 0;
 }
 
 .wedding-hero .date {
-  font-family: Georgia, serif;
-  font-size: 15px;
+  font-family: "Zeyada", cursive;
+  font-size: 24px;
   color: #ccc;
-  margin-top: 20px;
+  margin-top: 200px;
   line-height: 1.8;
   letter-spacing: 0.05em;
 }
@@ -155,7 +166,8 @@ button:hover {
   margin: 0;
   margin-bottom: 0;
   text-align: center;
-  height: 500px;
+  height: 550px;
+  font-family: "Playfair Display", serif;
 }
 
 .countdown h2 {
@@ -178,7 +190,7 @@ button:hover {
 
 .flip-card {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 4/3;
   perspective: 1000px;
   position: relative;
   background: #7E8569;
@@ -187,8 +199,8 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 65px;
+  font-weight: normal;
 }
 
 .flip-card-inner {
@@ -206,7 +218,7 @@ button:hover {
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -225,18 +237,19 @@ button:hover {
 }
 
 .countdown-label {
-  font-size: 14px;
+  font-size: 17px;
+  color: #7E8569;
   opacity: 0.9;
   margin-top: 5px;
 }
 
 .localizacion {
-  font-family: "The Seasons";
+  font-family: "Playfair Display", serif;
   margin: 0;
   padding: 10px 0 0 0;
   background-color: rgba(245, 241, 234, 1);
   text-align: center;
-  height: 1200px;
+  height: 1400px;
 }
 
 .localizacion h2 {
@@ -245,13 +258,13 @@ button:hover {
 }
 
 .localizacion-inner {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.3);
   padding: 8px;
   border-radius: 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   width: 90%;
   margin: 3px auto;
-  height: 450px;
+  height: 500px;
 }
 
 .mapa-container {
@@ -388,6 +401,7 @@ button:hover {
   text-align: center;
   padding: 15px 20px;
   background-color: rgba(142, 149, 118, 1);
+  font-family: "Playfair Display", serif;
 }
 
 .colage p {
@@ -399,18 +413,18 @@ button:hover {
 .colage-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 10px;
+  gap: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .colage-grid img {
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 1/1;
   object-fit: cover;
   background-color: #f0f0f0;
-  border-radius: 4px;
+  border-radius: 0;
   transition: transform 0.3s ease;
   cursor: pointer;
 }
@@ -440,12 +454,12 @@ button:hover {
     margin: 0 auto;
     padding: 20px;
     height: auto;
-    
+    margin-top: 30px;
     text-align: left;
 }
 
 .texto-esquileo p {
-    font-family: "The Seasons";
+    font-family: "Instrument Sans", sans-serif;
     margin: 0 0 15px 0;
     padding: 0;
     color: #333;
@@ -461,7 +475,9 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: auto;
+  height: 920px;
+  text-align: center;
+  font-family: "Playfair Display", serif;
 }
 
 .preparacion h2 {
@@ -489,7 +505,8 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: auto;
+    height: 900px;
+    font-family: "Playfair Display", serif;
 }
 
 .alojamientos h2 {
@@ -512,7 +529,7 @@ button:hover {
 .alojamientos-inner{
     margin: 15px 0;
     padding: 20px;
-    text-align: center;
+    text-align: left;
     background-color: #F1ECE2;
     border-radius: 4px;
     width: 85%;
@@ -547,6 +564,7 @@ button:hover {
     flex-direction: column;
     align-items: center;
     height: auto;
+    font-family: "Instrument Sans", sans-serif;
 }
 
 .preboda h2 {
@@ -592,8 +610,9 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: auto;
+    height: 400px;
     background-color: #f9f7f3;
+    font-family: "Playfair Display", serif;
 }
 
 .preguntas h2 {
@@ -612,7 +631,7 @@ button:hover {
     font-size: 16px;
     font-weight: 500;
     transition: background-color 0.3s ease;
-    
+    width: 70%;
     border: none;
 }
 
@@ -624,5 +643,16 @@ button:hover {
     
     border-radius: 8px;
     overflow: hidden;
+}
+
+.imagen-fiestas {
+  width: 80%;
+  height: 500px;
+  background-image: url("fotoPreparados.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  margin: 20px 0;
 }
 
